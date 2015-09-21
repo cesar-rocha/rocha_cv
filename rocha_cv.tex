@@ -1,256 +1,354 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Plasmati Graduate CV
-% LaTeX Template
-% Version 1.0 (24/3/13)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template modified by Fernando Paolo from:
 %
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
+% LaTeX Template: Designer's CV
 %
-% Original author:
-% Alessandro Plasmati (alessandro.plasmati@gmail.com)
+% Source: http://www.howtotex.com
+% 
+% Feel free to distribute this example, but please keep the referral
+% to HowToTeX.com
+% 
+% Date: March 2012
 %
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Modified by Lim Lian Tze to support multiple pages using fix provided at
+% http://www.howtotex.com/templates/creating-a-designers-cv-in-latex/
+% Date: November 2014
 %
-% Important note:
-% This template needs to be compiled with XeLaTeX.
-% The main document font is called Fontin and can be downloaded for free
-% from here: http://www.exljbris.com/fontin.html
+% Modified by Fernando Paolo to fit more information by changing the
+% page layout (white space and column sizes).
+% Data: September 2015
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To compile simply run:
+%
+% pdflatex source.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document properties and packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt,final]{memoir}
 
-% Modified to be compiled with pdfLaTeX
-% CROCHA, Fall 2013
+% misc
+\renewcommand{\familydefault}{bch}  % font
+\pagestyle{empty}                   % no pagenumbering
+\setlength{\parindent}{0pt}         % no paragraph indentation
 
-\documentclass[pagestart=firstchapter]{article}
-\usepackage[USenglish,english,american]{babel}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{geometry}
-\geometry{verbose,a4paper,tmargin=3cm,bmargin=2cm,lmargin=1.5cm,rmargin=2.cm}
-\usepackage{longtable}
-\usepackage{subfigure}
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage{setspace}
-\onehalfspacing
-\usepackage{amsmath,amsthm}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{esint}
-\usepackage{color}
-\usepackage{multicol}
+% required packages (add your own)
+\usepackage{flowfram}                                       % column layout
+\usepackage[top=1cm,left=1cm,right=1cm,bottom=1cm]{geometry}% margins
+\usepackage{graphicx}                                       % figures
+\usepackage{url}                                            % URLs
+\usepackage[usenames,dvipsnames]{xcolor}                    % color
+\usepackage{multicol}                                       % columns env.
+    \setlength{\multicolsep}{0pt}
+\usepackage{paralist}                                       % compact lists
+\usepackage{tikz}
+\usepackage[nodayofweek]{datetime}
 \usepackage{hyperref}
 
+% customize date
+\newdateformat{mydate}{\twodigit{\THEDAY}{ }\shortmonthname[\THEMONTH], \THEYEAR}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create column layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define length commands
+\setlength{\vcolumnsep}{\baselineskip}
+\setlength{\columnsep}{\vcolumnsep}
+
+% left frame
+\newflowframe{0.16\textwidth}{\textheight}{0pt}{0pt}[left]
+    \newlength{\LeftMainSep}
+    \setlength{\LeftMainSep}{0.16\textwidth}
+    \addtolength{\LeftMainSep}{0.75\columnsep}
+ 
+% small static frame for the vertical line
+\newstaticframe{1.5pt}{\textheight}{\LeftMainSep}{0pt}
+ 
+% content of the static frame
+\begin{staticcontents}{1}
+\hfill
+\tikz{%
+    \draw[loosely dotted,color=NavyBlue,line width=1.5pt,yshift=0]
+    (0,0) -- (0,\textheight);}
+\hfill\mbox{}
+\end{staticcontents}
+ 
+% right frame
+\addtolength{\LeftMainSep}{1.5pt}
+\addtolength{\LeftMainSep}{1\columnsep}
+\newflowframe{0.75\textwidth}{\textheight}{\LeftMainSep}{0pt}[main01]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define macros (for convience)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Sep}{\vspace{1.5em}}
+\newcommand{\SmallSep}{\vspace{0.5em}}
+
+\newenvironment{Research}
+    {\ignorespaces\textbf{\color{NavyBlue} Research}}
+    
+\newcommand{\CVSection}[1]
+    {\Large\textbf{#1}\par
+    \SmallSep\normalsize\normalfont}
+
+\newcommand{\CVItem}[1]
+    {\textbf{\color{NavyBlue} #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\pagestyle{empty} % Removes page numbering
-
-
-%----------------------------------------------------------------------------------------
-%	NAME AND CONTACT INFORMATION
-%----------------------------------------------------------------------------------------
-
-\par{\centering{\Huge \textbf{Cesar Barbedo Rocha}}\bigskip\par} % Your name
-
-\begin{center}
-    \begin{tabular}{rl}
-        Graduate Student Researcher ~~~~ &  ~~~~~~~~~~ 9500 Gilman Drive, M/C 0213 \\ 
-        Climate-Ocean-Atmosphere Program~  &  ~~~~~~~~~~ La Jolla, CA 92093 \\
-       Scripps Institution of Oceanography~    & ~~~~~~~~~~ \href{mailto:crocha@ucsd.edu}{\textcolor{blue}{crocha@ucsd.edu}}\\
-    University of California, San Diego ~~~& ~~~~~~~~~~~\url{http://www-pord.ucsd.edu/~crocha}\\
-    \end{tabular}
-\end{center}
-
-%----------------------------------------------------------------------------------------
-% PERSONAL INFORMATION	
-%----------------------------------------------------------------------------------------
-
-%------------------------------------------------
-
-
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-
-\section*{Education}
-
-\begin{tabular}{rl}	
-
-\textsc{Current}  & PhD student in \textsc{Oceanography}, \textbf{Scripps Institution of Oceanography,}\\
-                  & \textbf{University of California, San Diego.}\\
-                  & \small Advisor: William R. Young.\\
-&\\
-\textsc{2013} & Bachelor (2011) and Master (2013) of Science in \textsc{Oceanography}, \textbf{University of S\~ao Paulo}, Brazil;\\
-                      &  with exchange period at \textbf{University of Massachusetts Dartmouth}.\\
-
-                      & Theses: ``On the Brazil Current recirculation cell: A theoretical parametric approach'' (BS);\\
-                      & ``\href{http://www.teses.usp.br/teses/disponiveis/21/21135/tde-26092013-185418/en.php}{Energetics, Baroclinic Instability and the Vertical Structure of the Brazil Current at $22^\circ$--$28^\circ$S}'' (MS) \\
-& \small Advisors: Ilson Carlos A.  \textsc{da Silveira} (IOUSP) and Amit \textsc{Tandon} (UMass Dartmouth) \\
-&\\
-%------------------------------------------------
-
-\end{tabular}
-
-%----------------------------------------------------------------------------------------
-
-%----------------------------------------------------------------------------------------
-%	RESEARCH INTERESTS
-%----------------------------------------------------------------------------------------
-
-\section*{Research Statement}
-I use a mix of theory, analysis of observations, and computational simulations to understand how the ocean works. In particular, my main current research interest is on the physics of the upper ocean, specifically the eddy dynamics at meso to submesoscales.
-%----------------------------------------------------------------------------------------
-%	PUBLICATIONS
-%----------------------------------------------------------------------------------------
-
-\section*{Publications}
-
-\begin{tabular}{rl}
-\textsc{Coming up soon} &  \\
-\end{tabular}
-
-\begin{itemize}
-    \item \textbf{Rocha, C. B.};  Chereskin, T. K.; Gille, S. T. and Menemenlis, D., {\textit{in prep.} for JPO}: ``Drake Passage kinetic energy and sea-surface height horizontal wavenumber spectra in the mesoscale to submesoscale range (10-200 km)''. 
-\end{itemize}
-
-\begin{itemize}
-    \item \textbf{Rocha, C. B.};  Young, W. R. and Grooms, I., {\textit{ in prep.} for JPO}: ``On Galerkin approximations for the quasi-geostrophic equations''. 
-\end{itemize}
-
-
-
-\begin{tabular}{rl}
-\hspace{-.55cm}\textsc{Journal Articles} &  \\
-\end{tabular}
-
-\begin{itemize}
-    \item \textbf{Rocha, C. B.};  da Silveira, I. C. A., Castro, B. ,M. and Lima, J. A. M., \textbf{2014}: ``Vertical structure, energetics and dynamics of the Brazil Current System at 22$^\circ$S-28$^\circ$S'', \textit{\bf J. Geophys. Res., 119,} \href{http://onlinelibrary.wiley.com/doi/10.1002/2013JC009143/abstract}{\texttt{doi: 10.1002/2013JC009143}.} 
-
-    \item \textbf{Rocha, C. B.}; Tandon, A.; da Silveira, I. C. A. and Lima, J. A. M., \textbf{2013}: ``Traditional Quasi-geostrophic modes and Surface Quasi-geostrophic solutions in the Southwestern Atlantic'', \textit{\bf J. Geophys. Res., 118 (5),} \href{http://dx.doi.org/10.1002/jgrc.20214}{\texttt{doi:10.1002/jgrc.20214}.} 
-\end{itemize}
-
-\begin{tabular}{rl}
-\hspace{-.55cm}\textsc{Technical notes} ~~~~~~~~~~~~~ &  \\
-\end{tabular}
-
-\begin{itemize}
-    \item   Piola, A. R. and \textbf{Rocha, C. B.}, \textbf{2010}: ``Recent CTD/XBT comparisons in the Brazil Current''. Prepared for  \textit{Second XBT Fall Rate Workshop}, August 25-27, 2010, Hamburg, Germany. 
-\end{itemize}
-
-
-
-
-%----------------------------------------------------------------------------------------
-%   INVITED TALKS	
-%----------------------------------------------------------------------------------------
-
-
-\section*{Invited Talks}
-
-\begin{tabular}{rl}
-    \textsc{July 2013} & \textbf{Energetics and Dynamics of the Brazil Current System at 22$^\circ$S-28$^\circ$S}\\
-    & Seminar at FURG, Rio Grande, Brazil. Host: Prof. Paulo H. R. Calil. \\
-\end{tabular}
-
-
-%----------------------------------------------------------------------------------------
-%   FIELD EXPERIENCE	
-%----------------------------------------------------------------------------------------
-
-
-\section*{Field Experience}
-During the cruises listed below, I actively participated in instrument operation (XBT, CTD, ADCP, LADCP), near-real time data processing, and adaptive sampling. I co-authored the reports for the CERES III and IV cruises.\\
-
-\begin{tabular}{rl}
-
-    \textsc{July  2010} & \href{http://www.aoml.noaa.gov/phod/research/moc/samoc/}{``SAMOC Experiment''} - SAM03 PD 2010-05 cruise  aboard R/V "Puerto Deseado" (CONICET) \\
-                        & Southwestern Atlantic (35$^\circ$S); 13 days at sea. Chief scientist: Alberto Piola.\\ 
-  &\\ 
- \textsc{June  2010} & ``CERES Experiment'' - CERES IV cruise  aboard R/V ``Antares'' (Brazilian Navy)  \\
-                     & Southwestern Atlantic (22$^\circ$-30$^\circ$S); 15 days at sea. Chief scientist: Wellington Ceccopieri\\
-  &\\ 
-\textsc{2008 -- 2009} & ``CERES Experiment'' - CERES I, II, and III cruises  aboard R/V ``Gyre''  \\
-                     & Southwestern Atlantic (22$^\circ$-26$^\circ$S); $\sim$ 8 days at sea. Chief scientist: Wellington Ceccopieri\\
-  &\\ 
-
-\end{tabular}
-
-
-%----------------------------------------------------------------------------------------
-%   TEACHING EXPERIENCE	
-%----------------------------------------------------------------------------------------
-
-
-\section*{Teaching Experience}
-
-\begin{tabular}{rl}
-    \textsc{Spring 2011} & Teaching Assistant for ``Dynamical Oceanography II'' (Undergraduate)\\
-    & University of S\~ao Paulo, Brazil. Instructor: Prof. Ilson Carlos A. da Silveira. \\
-\end{tabular}
- 
-%----------------------------------------------------------------------------------------
-%	AWARDS
-%----------------------------------------------------------------------------------------
-
-\section*{Awards, Fellowships, and Honors}
-\begin{tabular}{rl}
-\textsc{2015} & ``Geophysical Fluid Dynamics Fellow, Woods Whole Oceanographic Institution''\\
-\textsc{2011} & ``Best BS thesis, Oceanographic Institute, University of S\~ao Paulo, Brazil''
-\end{tabular}
-
-
-
-
-%----------------------------------------------------------------------------------------
-%	COMPUTER SKILLS 
-%----------------------------------------------------------------------------------------
-
-\section*{Computer Skills}
-
-\begin{tabular}{rl}
-    \textsc{Programming}: & Python, Fortran 90, C, Shell script (bash)\\
-    \textsc{Version control}: & git, mercurial\\
-    \textsc{Diagramming}: & \LaTeX\\
-    \textsc{Applications}: & Matlab, GMT, Ferret, \textsc{HTML} (basics)\\
-    \textsc{Operating Systems}: & GNU/Linux, MacOS\\
-    \textsc{PE models}: &ROMS (basics)    
-\end{tabular}
-
-
-%----------------------------------------------------------------------------------------
-%	LANGUAGES
-%----------------------------------------------------------------------------------------
-
-\section*{Languages}
-
-\textsc{Portuguese} (Mother tongue), \textsc{English} (Fluent), \textsc{Spanish} (Professional fluency)
-%----------------------------------------------------------------------------------------
-%	MEMBERSHIP
-%----------------------------------------------------------------------------------------
-
-\section*{Membership}
-
-American Geophysical Union, The Oceanography Society, NumFOCUS (open code, better science).
-
-%----------------------------------------------------------------------------------------
-% OTHER	INTERESTS AND ACTIVITIES
-%----------------------------------------------------------------------------------------
-
-%\section*{References}
+% Left frame
+%%%%%%%%%%%%%%%%%%%%
 %
-%William R. Young, Professor of Physical Oceanography (SIO, UCSD) <\href{mailto:wryoung@ucsd.edu}{wryoung@ucsd.edu}>\\
-%Sarah T. Gille, Professor of Physical Oceanography (SIO, UCSD) <\href{mailto:sgille@ucsd.edu}{sgille@ucsd.edu}>\\
-%Teresa K. Chereskin, Research Oceanographer and Senior Lecturer (SIO, UCSD) <\href{mailto:tchereskin@ucsd.edu}{tchereskin@ucsd.edu}>\\
-%Amit Tandon, Professor of Physics and Oceanography (UMassD) <\href{mailto:atandon@umassd.edu}{atandon@umassd.edu}> 
-%
+% Upload your own photo using the files menu
+%\begin{figure}
+%    \hfill
+%    \includegraphics[width=0.6\columnwidth]{cv-photo.png}
+%    \vspace{-7cm}
+%\end{figure}
 
-%----------------------------------------------------------------------------------------
+\begin{flushright}\small
+    crocha@ucsd.edu\\[.1cm]
+    crocha700.github.io\\[.1cm]
+    github: crocha700\\[.1cm]
+    \textcolor[gray]{0.45}{\mydate\today}\\[.1cm]
+\end{flushright}\normalsize
+\framebreak
+
+% Right frame
+%%%%%%%%%%%%%%%%%%%%
+\Huge\bfseries { \color{NavyBlue}  Cesar B Rocha} \\
+\Large\bfseries Oceanographer, Geophysical Fluid Dynamicist, Phytonista \\
+
+\normalsize\normalfont
+
+%%% About me
+\begin{Research}
+Geophysical fluid dynamics and physical oceanography. Upper ocean dynamics, particularly
+at mesoscales to submesocales. Geophysical turbulence.  Numerical methods, particularly Galerkin approximations.
+\end{Research}
+
+\Sep
+
+%%% Education
+\CVSection{Education}
+
+Current, PhD in Oceanography, University of California, San Diego \\
+2011-13, BSc and MSc in Oceanography, University of S\~ao Paulo, Brazil \\
+
+\Sep
+
+%%% Experience
+\CVSection{Experience}
+
+\CVItem{2013--Current, Graduate Student Researcher, SIO/UCSD}\\
+Stratified planetary turbulence and dynamics of the upper ocean.
+\SmallSep
+
+\CVItem{2015, Fellow in Geophysical Fluid Dynamics, GFD Program, WHOI}\\
+Coupled reduced equations for strongly stratified flows.
+\SmallSep
+
+\Sep
+
+\Sep
+
+\CVSection{Publications}
+
+\CVItem{In preparation}\\
+
+Ardhuin, F., Rascle, N., Chapron, B., Gula, J., Molemaker, J., Gille, S., Menemenlis, D., \textbf{Rocha, C. B.}: Small scale currents have large effects on dominant ocean waves, to be submitted to GRL.
+
+\Sep
+
+\CVItem{Peer-reviewed}\\
+
+4.\,\textbf{Rocha, C. B.};  Chereskin, T. K.; Gille, S. T. and Menemenlis, D., {in revision}: ``Mesoscale to submesoscale wavenumber spectra in Drake Passage''. 
+
+\SmallSep
+
+3.\,\textbf{Rocha, C. B.};  Young, W. R. and Grooms, I., {in revision}: ``On Galerkin approximations for the quasi-geostrophic equations''. 
+
+\SmallSep
+
+2.\,\textbf{Rocha, C. B.};  da Silveira, I. C. A., Castro, B. ,M. and Lima, J. A. M., \textbf{2014}: ``Vertical structure, energetics and dynamics of the Brazil Current System at 22$^\circ$S-28$^\circ$S'', \textit{ J. Geophys. Res., 119,} \href{http://onlinelibrary.wiley.com/doi/10.1002/2013JC009143/abstract}{\texttt{doi:10.1002/2013JC009143}.} 
+
+\SmallSep
+
+1.\,\textbf{Rocha, C. B.}; Tandon, A.; da Silveira, I. C. A. and Lima, J. A. M., \textbf{2013}: ``Traditional Quasi-geostrophic modes and Surface Quasi-geostrophic solutions in the Southwestern Atlantic'', \textit{ J. Geophys. Res., 118 (5),} \href{http://dx.doi.org/10.1002/jgrc.20214}{\texttt{doi:10.1002/jgrc.20214}.} 
+
+\Sep
+
+\CVItem{Grey literature}\\
+
+1.\, \textbf{Rocha, C. B.}, 2015: Coupled reduced equations for strongly stratified flows,  Proceedings of the Geophysical Fluid Dynamics Program,  Woods Hole Oceanographic Institution, Woods Hole, MA.
+
+\Sep
+
+\CVSection{Software}
+
+1.\, Core developer for ``Python quasigeostrophic model'' (PyQG),
+
+\href{http://dx.doi.org/10.5281/zenodo.30517}{\texttt{doi.org/10.5281/zenodo.30517}} 
+
+\Sep
+
+\clearpage
+\framebreak
+\framebreak
+
+
+\CVSection{Service}
+2015, Representative of physical oceanography curricular group students in the committee for
+the Scripps Institution of Oceanography teaching award.
+
+%2015, Reviewer for JGR-Oceans, JPO, GRL, Nature, Science, NSF, NASA
+
+\Sep
+
+\CVSection{Honors \& Awards}
+2015, Geophysical Fluid Dynamics Fellowhsip, Woods Hole Oceanographic Institution\\
+2011, Best BSc thesis in Oceanography, University of Sao Paulo\\
+
+\Sep
+
+%%% Skills
+\CVSection{Skills}
+
+\CVItem{Programming}\\
+Python , C, Fortran 90, Shell-Script
+\SmallSep
+
+\CVItem{Applications}\\
+Matlab, \LaTeX, git, mercurial
+\SmallSep
+
+\CVItem{Languages}\\
+English (fluent), Portuguese (native), Spanish (professional fluency)
+
+\Sep
+
+%%% Skills
+\CVSection{Membership}
+
+American Geophysical Union, The Oceanography Society, NumFOCUS (open code, better science)
+
+\Sep
+
+%%% other
+\CVSection{Other interests}
+
+Data science, Scientific reproducibility, Free software, Open science, History and philosophy of science,
+ Bossa Nova, Portuguese literature 
+
+\Sep
+
+\CVSection{References}
+
+\CVItem{William R. Young}\\
+Distinguished Professor of Oceanography, UC San Diego, \texttt{wryoung@ucsd.edu}
+
+\SmallSep
+
+\CVItem{Myrl Hendershott}\\
+Professor of Oceanography, UC San Diego, \texttt{mch@ucsd.edu}
+
+
+\SmallSep
+
+\CVItem{Sarah T. Gille}\\
+Professor of Oceanography, UC San Diego, \texttt{sgille@ucsd.edu}
+
+
+
+\SmallSep
+
+\CVItem{Teresa K. Chereskin}\\
+Research Oceanographer and Senior Lecturer, UC San Diego, \texttt{tchereskin@ucsd.edu}
+
+
+
+
+
+
+
+
+%% You'll need these 3 lines at the end of each page!
+%\clearpage
+%\framebreak
+%\framebreak
+%
+%(\emph{Honors \& Awards continued})\\
+%2007--2008, Brazilian Ministry of Sci. \& Tech. Fellowship (Masters)\\
+%2007, Honor Mention (2nd best BSc Thesis), University of S\~ao Paulo\\
+%2005--2006, S\~ao Paulo Research Foundation Fellowship (Undergrad)\\
+%2004, Brazilian Ministry of Sci. \& Tech. Fellowship (Undergrad)
+%
+%\Sep
+%
+%\CVSection{Teaching}
+%Aug--Dec 2008, Computing for Geophysicists, T.A. at University of S\~ao Paulo\\
+%Mar--Jul 2008, Introduction to Geophysics, T.A. at University of S\~ao Paulo
+%
+%\Sep
+%
+%\CVSection{Fieldwork}
+%Dec 2004, Geophysical and Geological Survey, SE Brazil (12 days at sea)\\
+%Jan 2004, Brazilian Antarctic Research Station (30 days in Antarctica)\\
+%Dec 2003, Environmental Monitoring Program, NE Brazil (14 days at sea)\\
+%Jan 2003, Oceanographic Moorings II, SE Brazil (8 days at sea)\\
+%Jul 2002, Oceanographic Moorings I, SE Brazil (9 days at sea)
+
+
+
+
+%% You'll need these 3 lines at the end of each page!
+%\clearpage
+%\framebreak
+%\framebreak
+%
+%\CVItem{2005 - 2007, Vivamus vel bibendum}\\
+%Proin rutrum pharetra molestie. Cras sollicitudin nulla nec leo lobortis in tristique purus pretium. Ut eu felis nulla.
+%\Sep
+%
+%
+%% Skills
+%\CVSection{Skills}
+%\CVItem{Platforms}
+%\begin{multicols}{3}
+%\begin{compactitem}[\color{NavyBlue}$\circ$]
+%    \item Lorem 
+%    \item Ipsum 
+%\end{compactitem}
+%\end{multicols}
+%\SmallSep
+%
+%\CVItem{Computer software}
+%\begin{multicols}{3}
+%\begin{compactitem}[\color{NavyBlue}$\circ$]
+%    \item Lorem 
+%    \item Ipsum 
+%    \item Dolor 
+%    \item Sit 
+%    \item Amet
+%    \item Consectetur 
+%    \item Adipiscing 
+%    \item Elit
+%    \item \ldots
+%\end{compactitem}
+%\end{multicols}
+%\Sep 
+%
+%% References
+%\CVSection{References}
+%References upon request.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
+
